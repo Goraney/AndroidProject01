@@ -14,7 +14,7 @@
 
 비슷한 게임
 
-![비슷한 게임](D:\MySource\4-1\SmartphoneGameProgramming\AndroidProject\img_readme\비슷한 게임.jpg)
+![](https://github.com/Goraney/AndroidProject01/blob/main/img_readme/ex.jpg)
 
 
 
@@ -32,7 +32,7 @@
 
    누르면 해당 스테이지를 시작하는 **스테이지** 버튼과 **뒤로가기** 버튼으로 이루어진 화면
 
-   <img src="D:\MySource\4-1\SmartphoneGameProgramming\AndroidProject\img_readme\스테이지 선택.jpg" alt="스테이지 선택"  />
+   ![](https://github.com/Goraney/AndroidProject01/blob/main/img_readme/select.jpg)
 
 3. **메인 화면**
 
@@ -47,7 +47,7 @@
 
    플레이어와 포탈 충돌시 **스테이지 클리어**
 
-   <img src="D:\MySource\4-1\SmartphoneGameProgramming\AndroidProject\img_readme\실행화면예상.png" alt="실행화면예상" style="zoom: 67%;" />
+   ![](https://github.com/Goraney/AndroidProject01/blob/main/img_readme/main.png)
 
 
 
