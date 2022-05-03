@@ -14,8 +14,12 @@ public class SelectActivity extends AppCompatActivity {
     }
 
     public void onBtnSelect(View view) {
-//        Log.d("tag", "onBtnStage()");
         Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
+    }
+
+    public void onBtnBack(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
