@@ -34,7 +34,7 @@
 
    누르면 해당 스테이지를 시작하는 **스테이지** 버튼과 **뒤로가기** 버튼으로 이루어진 화면
 
-   ![](https://github.com/Goraney/AndroidProject01/blob/main/img_readme/start_screen.jpg)
+   ![](https://github.com/Goraney/AndroidProject01/blob/main/img_readme/select_screen.jpg)
 
    
 
