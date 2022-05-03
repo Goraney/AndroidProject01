@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:orientation="vertical"
     tools:context=".SelectActivity">
 
     <LinearLayout
@@ -42,17 +42,56 @@
         >
 
         <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:onClick="onBtnSelect"
-            android:background="@null"
+            android:id="@+id/stageBtn01"
+            style="@style/stageButtonStyle"
             android:src="@mipmap/f_01_01"
             />
-
-
+        <ImageButton
+            android:id="@+id/stageBtn02"
+            style="@style/stageButtonStyle"
+            android:src="@mipmap/f_02_01"
+            />
+        <ImageButton
+            android:id="@+id/stageBtn03"
+            style="@style/stageButtonStyle"
+            android:src="@mipmap/f_03_01"
+            />
+        <ImageButton
+            android:id="@+id/stageBtn04"
+            style="@style/stageButtonStyle"
+            android:src="@mipmap/f_04_01"
+            />
 
     </LinearLayout>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        >
+
+        <ImageButton
+            android:id="@+id/stageBtn05"
+            style="@style/stageButtonStyle"
+            android:src="@mipmap/f_05_01"
+            />
+        <ImageButton
+            android:id="@+id/stageBtn06"
+            style="@style/stageButtonStyle"
+            android:src="@mipmap/f_06_01"
+            />
+        <ImageButton
+            android:id="@+id/stageBtn07"
+            style="@style/stageButtonStyle"
+            android:src="@mipmap/f_07_01"
+            />
+        <ImageButton
+            android:id="@+id/stageBtn08"
+            style="@style/stageButtonStyle"
+            android:src="@mipmap/f_08_01"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
