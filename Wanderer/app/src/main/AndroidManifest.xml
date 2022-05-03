@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wanderer">
         <activity
+            android:name=".GameActivity"
+            android:screenOrientation="sensorLandscape"
+            android:configChanges="orientation"
+            android:exported="false"/>
+        <activity
+            android:name=".SelectActivity"
+            android:screenOrientation="sensorLandscape"
+            android:configChanges="orientation"
+            android:exported="false"/>
+        <activity
             android:name=".MainActivity"
             android:screenOrientation="sensorLandscape"
             android:configChanges="orientation"
