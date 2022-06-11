@@ -1,28 +1,87 @@
 package kr.ac.tukorea.sgp02.u2019182020.wanderer.framework;
 
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
 public class BaseGame {
-    protected static BaseGame singleton;
-    public float frameTime;
-    public float elapsedTime;
+    public float frameTime, elapsedTime;
 
     public static BaseGame getInstance() {
-        return singleton;
+        int lastIndex = sceneStack.size() - 1;
+
+        if (lastIndex < 0) {
+            return null;
+        }
+
+        return sceneStack.get(lastIndex);
     }
 
     public static void clear() {
-        singleton = null;
+        while (sceneStack.size() > 0) {
+            BaseGame scene = sceneStack.remove(0);
+            scene.end();
+        }
+        sceneStack.clear();
     }
 
     protected ArrayList<ArrayList<GameObject>> layers;
 
+    protected static ArrayList<BaseGame> sceneStack = new ArrayList<>();
+
+    public static void start(BaseGame scene) {
+        int lastIndex = sceneStack.size() - 1;
+
+        if (lastIndex >= 0) {
+            BaseGame top = sceneStack.remove(lastIndex);
+            top.end();
+            sceneStack.set(lastIndex, scene);
+        } else {
+            sceneStack.add(scene);
+        }
+
+        scene.start();
+    }
+
+    public static void push(BaseGame scene) {
+        int lastIndex = sceneStack.size() - 1;
+
+        if (lastIndex >= 0) {
+            BaseGame top = sceneStack.get(lastIndex);
+            top.pause();
+        }
+
+        sceneStack.add(scene);
+        scene.start();
+    }
+
+    public static void popScene() {
+        int lastIndex = sceneStack.size() - 1;
+
+        if (lastIndex >= 0) {
+            BaseGame top = sceneStack.remove(lastIndex);
+            top.end();
+        }
+
+        lastIndex--;
+
+        if (lastIndex >= 0) {
+            BaseGame top = sceneStack.get(lastIndex);
+            top.resume();
+        }
+    }
+
     public void init() {
         elapsedTime = 0;
     }
+
+    public boolean isTransparent() { return false; }
+    public void start(){}
+    public void pause(){}
+    public void resume(){}
+    public void end(){}
 
     protected void initLayers(int count) {
         layers = new ArrayList<>();
@@ -43,6 +102,18 @@ public class BaseGame {
     }
 
     public void draw(Canvas canvas) {
+        draw(canvas, sceneStack.size() - 1);
+    }
+
+    protected void draw(Canvas canvas, int index) {
+        BaseGame scene = sceneStack.get(index);
+
+        if (scene.isTransparent() && index > 0) {
+            draw(canvas, index - 1);
+        }
+
+        ArrayList<ArrayList<GameObject>> layers = scene.layers;
+
         for (ArrayList<GameObject> gameObjects : layers) {
             for (GameObject gobj : gameObjects) {
                 gobj.draw(canvas);
@@ -68,7 +139,9 @@ public class BaseGame {
                     boolean removed = gameObjects.remove(gameObject);
                     if (!removed) continue;
                     if (gameObject instanceof Recyclable) {
-                        RecycleBin.add((Recyclable) gameObject);
+                        Recyclable recyclable = (Recyclable) gameObject;
+                        recyclable.finish();
+                        RecycleBin.add(recyclable);
                     }
                     break;
                 }
@@ -90,6 +163,12 @@ public class BaseGame {
         for (ArrayList<GameObject> gameObjects : layers) {
             count += gameObjects.size();
         }
+
         return count;
     }
+
+    public void finish() {
+        GameView.view.getActivity().finish();
+    }
+
 }
