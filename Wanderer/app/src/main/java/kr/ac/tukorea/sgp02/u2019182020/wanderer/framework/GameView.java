@@ -1,6 +1,8 @@
 package kr.ac.tukorea.sgp02.u2019182020.wanderer.framework;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.Choreographer;
@@ -77,4 +79,19 @@ public class GameView extends View implements Choreographer.FrameCallback {
             Choreographer.getInstance().postFrameCallback(this);
         }
     }
+
+    public Activity getActivity() {
+        Context context = getContext();
+
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (Activity)context;
+            }
+
+            context = ((ContextWrapper)context).getBaseContext();
+        }
+
+        return null;
+    }
+
 }
