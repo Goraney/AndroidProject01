@@ -50,6 +50,18 @@ public class BaseGame {
         }
     }
 
+    public void add(int layerIndex, GameObject gameObject) {
+        GameView.view.post(new Runnable() {
+            @Override
+            public void run() {
+                    ArrayList<GameObject> gameObjects = layers.get(layerIndex);
+                    gameObjects.add(gameObject);
+            }
+        });
+    }
+
+    // remove 추가할것
+
     public boolean onTouchEvent(MotionEvent event) {
         return false;
     }
