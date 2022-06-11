@@ -4,11 +4,12 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.Choreographer;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 
-public class GameView extends View {
+public class GameView extends View implements Choreographer.FrameCallback {
     public static GameView view;
     private static final String TAG = GameView.class.getSimpleName();
     private long lastTimeNanos;
@@ -20,8 +21,35 @@ public class GameView extends View {
         view = this;
     }
 
-    public void doFrame(long currentTimeNanos) {
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
 
+        if (!initialized) {
+            initView();
+            initialized = true;
+            running = true;
+            Choreographer.getInstance().postFrameCallback(this);
+        }
+    }
+
+    @Override
+    public void doFrame(long currentTimeNanos) {
+        long now = currentTimeNanos;
+        if (lastTimeNanos == 0) {
+            lastTimeNanos = now;
+        }
+
+        int elapsed = (int) (now - lastTimeNanos);
+
+        if (elapsed != 0) {
+            lastTimeNanos = now;
+            BaseGame game = BaseGame.getInstance();
+            game.update(elapsed);
+            invalidate();
+        }
+
+        Choreographer.getInstance().postFrameCallback(this);
     }
 
     private void initView() {
