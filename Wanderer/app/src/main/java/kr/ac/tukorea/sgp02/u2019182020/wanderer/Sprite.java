@@ -9,12 +9,24 @@ public class Sprite implements GameObject {
     protected RectF dstRect = new RectF();
     protected float x, y, radius;
 
+    public Sprite(float x, float y, int radiusDimenResId, int bitmapResId) {
+        this.x = x;
+        this.y = y;
+        this.radius = Metrics.size(radiusDimenResId);
+        dstRect.set(x - radius, y - radius, x + radius, y + radius);
+        bitmap = BitmapPool.get(bitmapResId);
+    }
+
     public Sprite(float x, float y, float w, float h, int bitmapResId) {
         this.x = x;
         this.y = y;
         this.radius = w / 2;
         dstRect.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2);
         bitmap = BitmapPool.get(bitmapResId);
+    }
+
+    public void setDstRectWithRadius() {
+        dstRect.set(x - radius, y - radius, x + radius, y + radius);
     }
 
     public void setDstRect(float width, float height) {
