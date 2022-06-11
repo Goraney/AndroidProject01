@@ -45,21 +45,25 @@
             android:id="@+id/stageBtn01"
             style="@style/stageButtonStyle"
             android:src="@mipmap/f_01_01"
+            android:onClick="onBtnSelect"
             />
         <ImageButton
             android:id="@+id/stageBtn02"
             style="@style/stageButtonStyle"
             android:src="@mipmap/f_02_01"
+            android:onClick="onBtnSelect"
             />
         <ImageButton
             android:id="@+id/stageBtn03"
             style="@style/stageButtonStyle"
             android:src="@mipmap/f_03_01"
+            android:onClick="onBtnSelect"
             />
         <ImageButton
             android:id="@+id/stageBtn04"
             style="@style/stageButtonStyle"
             android:src="@mipmap/f_04_01"
+            android:onClick="onBtnSelect"
             />
 
     </LinearLayout>
@@ -75,21 +79,25 @@
             android:id="@+id/stageBtn05"
             style="@style/stageButtonStyle"
             android:src="@mipmap/f_05_01"
+            android:onClick="onBtnSelect"
             />
         <ImageButton
             android:id="@+id/stageBtn06"
             style="@style/stageButtonStyle"
             android:src="@mipmap/f_06_01"
+            android:onClick="onBtnSelect"
             />
         <ImageButton
             android:id="@+id/stageBtn07"
             style="@style/stageButtonStyle"
             android:src="@mipmap/f_07_01"
+            android:onClick="onBtnSelect"
             />
         <ImageButton
             android:id="@+id/stageBtn08"
             style="@style/stageButtonStyle"
             android:src="@mipmap/f_08_01"
+            android:onClick="onBtnSelect"
             />
 
     </LinearLayout>

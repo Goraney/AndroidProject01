@@ -18,7 +18,7 @@
             android:name=".app.SelectActivity"
             android:screenOrientation="sensorLandscape"
             android:configChanges="orientation"
-            android:exported="false"/>
+            android:exported="true"/>
         <activity
             android:name=".app.MainActivity"
             android:screenOrientation="sensorLandscape"
