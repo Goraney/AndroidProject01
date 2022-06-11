@@ -1,10 +1,12 @@
-package kr.ac.tukorea.sgp02.u2019182020.wanderer;
+package kr.ac.tukorea.sgp02.u2019182020.wanderer.app;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import kr.ac.tukorea.sgp02.u2019182020.wanderer.R;
 
 public class SelectActivity extends AppCompatActivity {
     @Override

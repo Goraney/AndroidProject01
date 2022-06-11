@@ -1,4 +1,4 @@
-package kr.ac.tukorea.sgp02.u2019182020.wanderer;
+package kr.ac.tukorea.sgp02.u2019182020.wanderer.framework;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

@@ -1,10 +1,8 @@
-package kr.ac.tukorea.sgp02.u2019182020.wanderer;
+package kr.ac.tukorea.sgp02.u2019182020.wanderer.framework;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Choreographer;
 import android.view.MotionEvent;
 import android.view.View;
