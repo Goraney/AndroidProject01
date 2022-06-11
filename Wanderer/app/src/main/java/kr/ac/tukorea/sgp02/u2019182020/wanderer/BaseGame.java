@@ -60,7 +60,21 @@ public class BaseGame {
         });
     }
 
-    // remove 추가할것
+    public void remove(GameObject gameObject) {
+        GameView.view.post(new Runnable() {
+            @Override
+            public void run() {
+                for (ArrayList<GameObject> gameObjects : layers) {
+                    boolean removed = gameObjects.remove(gameObject);
+                    if (!removed) continue;
+                    if (gameObject instanceof Recyclable) {
+                        RecycleBin.add((Recyclable) gameObject);
+                    }
+                    break;
+                }
+            }
+        });
+    }
 
     public boolean onTouchEvent(MotionEvent event) {
         return false;
