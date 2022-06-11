@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Choreographer;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -56,7 +58,25 @@ public class GameView extends View implements Choreographer.FrameCallback {
         BaseGame.getInstance().init();
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return BaseGame.getInstance().onTouchEvent(event);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         BaseGame.getInstance().draw(canvas);
+    }
+
+    public void pauseGame() {
+        running = false;
+    }
+
+    public void resumeGame() {
+        if (initialized && !running) {
+            running = true;
+            lastTimeNanos = 0;
+            Choreographer.getInstance().postFrameCallback(this);
+        }
     }
 }
