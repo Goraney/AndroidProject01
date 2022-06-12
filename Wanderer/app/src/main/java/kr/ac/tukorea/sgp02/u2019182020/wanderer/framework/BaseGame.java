@@ -1,10 +1,15 @@
 package kr.ac.tukorea.sgp02.u2019182020.wanderer.framework;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
+
+import kr.ac.tukorea.sgp02.u2019182020.wanderer.BuildConfig;
 
 public class BaseGame {
     public float frameTime, elapsedTime;
@@ -20,14 +25,15 @@ public class BaseGame {
     }
 
     public static void clear() {
-        while (sceneStack.size() > 0) {
-            BaseGame scene = sceneStack.remove(0);
-            scene.end();
-        }
+        //while (sceneStack.size() > 0) {
+            //BaseGame scene = sceneStack.remove(0);
+            //scene.end();
+        //}
         sceneStack.clear();
     }
 
     protected ArrayList<ArrayList<GameObject>> layers;
+    protected Paint collisionPaint;
 
     protected static ArrayList<BaseGame> sceneStack = new ArrayList<>();
 
@@ -74,10 +80,15 @@ public class BaseGame {
     }
 
     public void init() {
+        // 디버그
+        collisionPaint = new Paint();
+        collisionPaint.setStyle(Paint.Style.STROKE);
+        collisionPaint.setColor(Color.RED);
+
         elapsedTime = 0;
     }
 
-    public boolean isTransparent() { return false; }
+    //public boolean isTransparent() { return false; }
     public void start(){}
     public void pause(){}
     public void resume(){}
@@ -101,22 +112,40 @@ public class BaseGame {
         }
     }
 
+//    public void draw(Canvas canvas) {
+//        draw(canvas, sceneStack.size() - 1);
+//    }
+
+//    protected void draw(Canvas canvas, int index) {
+//        BaseGame scene = sceneStack.get(index);
+//
+//        if (scene.isTransparent() && index > 0) {
+//            draw(canvas, index - 1);
+//        }
+//
+//        ArrayList<ArrayList<GameObject>> layers = scene.layers;
+//
+//        for (ArrayList<GameObject> gameObjects : layers) {
+//            for (GameObject gobj : gameObjects) {
+//                gobj.draw(canvas);
+//            }
+//        }
+//    }
     public void draw(Canvas canvas) {
-        draw(canvas, sceneStack.size() - 1);
-    }
-
-    protected void draw(Canvas canvas, int index) {
-        BaseGame scene = sceneStack.get(index);
-
-        if (scene.isTransparent() && index > 0) {
-            draw(canvas, index - 1);
-        }
-
-        ArrayList<ArrayList<GameObject>> layers = scene.layers;
-
         for (ArrayList<GameObject> gameObjects : layers) {
             for (GameObject gobj : gameObjects) {
                 gobj.draw(canvas);
+            }
+        }
+    }
+
+    public void drawBoxCollidables(Canvas canvas) {
+        for (ArrayList<GameObject> gameObjects : layers) {
+            for (GameObject gobj : gameObjects) {
+                if (gobj instanceof BoxCollidable) {
+                    RectF box = ((BoxCollidable) gobj).getBoundingRect();
+                    canvas.drawRect(box, collisionPaint);
+                }
             }
         }
     }
@@ -171,4 +200,7 @@ public class BaseGame {
         GameView.view.getActivity().finish();
     }
 
+    public boolean handleBackKey() {
+        return false;
+    }
 }
