@@ -39,4 +39,12 @@ public class GameActivity extends AppCompatActivity {
         BaseGame.clear();
         super.onDestroy();
     }
+
+    @Override
+    public void onBackPressed() {
+        if (GameView.view.onBackPressed()) {
+            return;
+        }
+        super.onBackPressed();
+    }
 }

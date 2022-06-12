@@ -53,4 +53,10 @@ public class MainGame extends BaseGame {
     public void end() {
 
     }
+
+    @Override
+    public boolean handleBackKey() {
+        BaseGame.popScene();
+        return true;
+    }
 }
