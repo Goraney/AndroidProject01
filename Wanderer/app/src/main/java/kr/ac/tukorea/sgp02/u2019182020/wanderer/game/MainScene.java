@@ -1,21 +1,16 @@
 package kr.ac.tukorea.sgp02.u2019182020.wanderer.game;
 
-import androidx.constraintlayout.helper.widget.Layer;
+import kr.ac.tukorea.sgp02.u2019182020.wanderer.framework.Scene;
 
-import java.util.ArrayList;
-
-import kr.ac.tukorea.sgp02.u2019182020.wanderer.framework.BaseGame;
-import kr.ac.tukorea.sgp02.u2019182020.wanderer.framework.GameObject;
-
-public class MainGame extends BaseGame {
+public class MainScene extends Scene {
     //public static final String PARAM_STAGE_INDEX = "stage_index";
     //protected int mapIndex;
 
-    private static MainGame singleton;
+    private static MainScene singleton;
 
-    public static MainGame get() {
+    public static MainScene get() {
         if (singleton == null) {
-            singleton = new MainGame();
+            singleton = new MainScene();
         }
 
         return singleton;
@@ -56,7 +51,7 @@ public class MainGame extends BaseGame {
 
     @Override
     public boolean handleBackKey() {
-        BaseGame.popScene();
+        Scene.popScene();
         return true;
     }
 }
