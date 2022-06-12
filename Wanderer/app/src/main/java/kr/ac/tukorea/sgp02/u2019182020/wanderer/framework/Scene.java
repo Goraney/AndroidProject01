@@ -22,10 +22,10 @@ public class Scene {
     }
 
     public static void clear() {
-        //while (sceneStack.size() > 0) {
-            //BaseGame scene = sceneStack.remove(0);
-            //scene.end();
-        //}
+        while (sceneStack.size() > 0) {
+            Scene scene = sceneStack.remove(0);
+            scene.end();
+        }
         sceneStack.clear();
     }
 
@@ -85,7 +85,7 @@ public class Scene {
         elapsedTime = 0;
     }
 
-    //public boolean isTransparent() { return false; }
+    public boolean isTransparent() { return false; }
     public void start(){}
     public void pause(){}
     public void resume(){}
@@ -109,32 +109,32 @@ public class Scene {
         }
     }
 
-//    public void draw(Canvas canvas) {
-//        draw(canvas, sceneStack.size() - 1);
-//    }
-
-//    protected void draw(Canvas canvas, int index) {
-//        BaseGame scene = sceneStack.get(index);
-//
-//        if (scene.isTransparent() && index > 0) {
-//            draw(canvas, index - 1);
-//        }
-//
-//        ArrayList<ArrayList<GameObject>> layers = scene.layers;
-//
-//        for (ArrayList<GameObject> gameObjects : layers) {
-//            for (GameObject gobj : gameObjects) {
-//                gobj.draw(canvas);
-//            }
-//        }
-//    }
     public void draw(Canvas canvas) {
+        draw(canvas, sceneStack.size() - 1);
+    }
+
+    protected void draw(Canvas canvas, int index) {
+        Scene scene = sceneStack.get(index);
+
+        if (scene.isTransparent() && index > 0) {
+            draw(canvas, index - 1);
+        }
+
+        ArrayList<ArrayList<GameObject>> layers = scene.layers;
+
         for (ArrayList<GameObject> gameObjects : layers) {
             for (GameObject gobj : gameObjects) {
                 gobj.draw(canvas);
             }
         }
     }
+//    public void draw(Canvas canvas) {
+//        for (ArrayList<GameObject> gameObjects : layers) {
+//            for (GameObject gobj : gameObjects) {
+//                gobj.draw(canvas);
+//            }
+//        }
+//    }
 
     public void drawBoxCollidables(Canvas canvas) {
         for (ArrayList<GameObject> gameObjects : layers) {
@@ -184,6 +184,8 @@ public class Scene {
     }
 
     public int objectCount() {
+        if (layers == null) return 0;
+
         int count = 0;
 
         for (ArrayList<GameObject> gameObjects : layers) {
