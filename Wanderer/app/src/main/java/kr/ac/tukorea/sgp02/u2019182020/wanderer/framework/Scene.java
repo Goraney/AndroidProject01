@@ -4,17 +4,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
-import kr.ac.tukorea.sgp02.u2019182020.wanderer.BuildConfig;
-
-public class BaseGame {
+public class Scene {
     public float frameTime, elapsedTime;
 
-    public static BaseGame getInstance() {
+    public static Scene getInstance() {
         int lastIndex = sceneStack.size() - 1;
 
         if (lastIndex < 0) {
@@ -35,13 +32,13 @@ public class BaseGame {
     protected ArrayList<ArrayList<GameObject>> layers;
     protected Paint collisionPaint;
 
-    protected static ArrayList<BaseGame> sceneStack = new ArrayList<>();
+    protected static ArrayList<Scene> sceneStack = new ArrayList<>();
 
-    public static void start(BaseGame scene) {
+    public static void start(Scene scene) {
         int lastIndex = sceneStack.size() - 1;
 
         if (lastIndex >= 0) {
-            BaseGame top = sceneStack.remove(lastIndex);
+            Scene top = sceneStack.remove(lastIndex);
             top.end();
             sceneStack.set(lastIndex, scene);
         } else {
@@ -51,11 +48,11 @@ public class BaseGame {
         scene.start();
     }
 
-    public static void push(BaseGame scene) {
+    public static void push(Scene scene) {
         int lastIndex = sceneStack.size() - 1;
 
         if (lastIndex >= 0) {
-            BaseGame top = sceneStack.get(lastIndex);
+            Scene top = sceneStack.get(lastIndex);
             top.pause();
         }
 
@@ -67,14 +64,14 @@ public class BaseGame {
         int lastIndex = sceneStack.size() - 1;
 
         if (lastIndex >= 0) {
-            BaseGame top = sceneStack.remove(lastIndex);
+            Scene top = sceneStack.remove(lastIndex);
             top.end();
         }
 
         lastIndex--;
 
         if (lastIndex >= 0) {
-            BaseGame top = sceneStack.get(lastIndex);
+            Scene top = sceneStack.get(lastIndex);
             top.resume();
         }
     }
