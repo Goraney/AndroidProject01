@@ -21,13 +21,36 @@ public class MainGame extends BaseGame {
         return singleton;
     }
 
+    public enum Layer {
+
+    }
+
     //public void setMapIndex(int mapIndex) {
         //this.mapIndex = mapIndex;
     //}
 
     public void init() {
         super.init();
+
     }
 
+    @Override
+    public void start() {
 
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void end() {
+
+    }
 }
