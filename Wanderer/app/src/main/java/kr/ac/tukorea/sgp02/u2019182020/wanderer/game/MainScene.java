@@ -6,9 +6,9 @@ import kr.ac.tukorea.sgp02.u2019182020.wanderer.framework.Scene;
 public class MainScene extends Scene {
     //public static final String PARAM_STAGE_INDEX = "stage_index";
     //protected int mapIndex;
+    private Player player;
 
     private static MainScene singleton;
-    private Player player;
 
     public static MainScene get() {
         if (singleton == null) {
@@ -19,7 +19,7 @@ public class MainScene extends Scene {
     }
 
     public enum Layer {
-        player, COUNT
+        player, controller, COUNT;
     }
 
     public float size(float unit) {
@@ -37,6 +37,8 @@ public class MainScene extends Scene {
 
         player = new Player(size(6), size(5), size(2), size(2));
 
+        add(Layer.player.ordinal(), player);
+        add(Layer.controller.ordinal(), new CollisionChecker(player));
     }
 
     @Override
