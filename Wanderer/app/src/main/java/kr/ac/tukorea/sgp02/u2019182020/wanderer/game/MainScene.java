@@ -1,5 +1,6 @@
 package kr.ac.tukorea.sgp02.u2019182020.wanderer.game;
 
+import kr.ac.tukorea.sgp02.u2019182020.wanderer.framework.Metrics;
 import kr.ac.tukorea.sgp02.u2019182020.wanderer.framework.Scene;
 
 public class MainScene extends Scene {
@@ -7,6 +8,7 @@ public class MainScene extends Scene {
     //protected int mapIndex;
 
     private static MainScene singleton;
+    private Player player;
 
     public static MainScene get() {
         if (singleton == null) {
@@ -17,7 +19,11 @@ public class MainScene extends Scene {
     }
 
     public enum Layer {
+        player, COUNT
+    }
 
+    public float size(float unit) {
+        return Metrics.height / 10f * unit;
     }
 
     //public void setMapIndex(int mapIndex) {
@@ -26,6 +32,10 @@ public class MainScene extends Scene {
 
     public void init() {
         super.init();
+
+        initLayers(Layer.COUNT.ordinal());
+
+        player = new Player(size(6), size(5), size(2), size(2));
 
     }
 
