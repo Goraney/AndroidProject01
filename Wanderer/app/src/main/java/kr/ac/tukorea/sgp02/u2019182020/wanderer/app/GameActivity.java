@@ -5,9 +5,9 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import kr.ac.tukorea.sgp02.u2019182020.wanderer.framework.BaseGame;
+import kr.ac.tukorea.sgp02.u2019182020.wanderer.framework.Scene;
 import kr.ac.tukorea.sgp02.u2019182020.wanderer.framework.GameView;
-import kr.ac.tukorea.sgp02.u2019182020.wanderer.game.MainGame;
+import kr.ac.tukorea.sgp02.u2019182020.wanderer.game.MainScene;
 
 public class GameActivity extends AppCompatActivity {
     @Override
@@ -17,8 +17,8 @@ public class GameActivity extends AppCompatActivity {
 
         setContentView(new GameView(this, null));
 
-        MainGame game = MainGame.get();
-        BaseGame.push(game);
+        MainScene game = MainScene.get();
+        Scene.push(game);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         GameView.view = null;
-        BaseGame.clear();
+        Scene.clear();
         super.onDestroy();
     }
 
