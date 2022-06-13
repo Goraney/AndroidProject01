@@ -127,6 +127,8 @@ public class Scene {
                 gobj.draw(canvas);
             }
         }
+
+        drawBoxCollidables(canvas, layers);
     }
 //    public void draw(Canvas canvas) {
 //        for (ArrayList<GameObject> gameObjects : layers) {
@@ -136,7 +138,7 @@ public class Scene {
 //        }
 //    }
 
-    public void drawBoxCollidables(Canvas canvas) {
+    public void drawBoxCollidables(Canvas canvas, ArrayList<ArrayList<GameObject>> layers) {
         for (ArrayList<GameObject> gameObjects : layers) {
             for (GameObject gobj : gameObjects) {
                 if (gobj instanceof BoxCollidable) {
