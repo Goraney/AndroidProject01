@@ -53,7 +53,7 @@ public class Button extends Sprite implements Touchable {
             case MotionEvent.ACTION_MOVE:
                 return pressed;
         }
-        
+
         return false;
     }
 

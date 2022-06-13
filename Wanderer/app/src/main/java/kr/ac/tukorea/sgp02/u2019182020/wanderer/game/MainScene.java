@@ -19,7 +19,7 @@ public class MainScene extends Scene {
     }
 
     public enum Layer {
-        player, controller, COUNT;
+        player, button, controller, COUNT;
     }
 
     public float size(float unit) {
