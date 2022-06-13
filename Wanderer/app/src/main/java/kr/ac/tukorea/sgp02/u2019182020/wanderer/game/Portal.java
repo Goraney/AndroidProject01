@@ -9,6 +9,7 @@ import kr.ac.tukorea.sgp02.u2019182020.wanderer.framework.BoxCollidable;
 import kr.ac.tukorea.sgp02.u2019182020.wanderer.framework.Sprite;
 
 public class Portal extends Sprite implements BoxCollidable {
+    protected boolean valid = true;
     protected RectF collisionBox = new RectF();
 
     public Portal(float x, float y, float w, float h) {
@@ -31,7 +32,8 @@ public class Portal extends Sprite implements BoxCollidable {
 
     @Override
     public void draw(Canvas canvas) {
-        canvas.drawBitmap(bitmap, null, dstRect, null);
+        if (valid) {
+            canvas.drawBitmap(bitmap, null, dstRect, null);
+        }
     }
-
 }
