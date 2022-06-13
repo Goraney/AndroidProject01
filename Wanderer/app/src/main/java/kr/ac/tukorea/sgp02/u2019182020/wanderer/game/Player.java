@@ -71,5 +71,31 @@ public class Player extends Sprite implements BoxCollidable {
         }
     }
 
+    public void move(boolean startsButton, int flag) {
+        if (startsButton) {
+            if (flag == 0) {
+                setState(State.left);
+                return;
+            }
+            else if (flag == 1) {
+                setState(State.right);
+                return;
+            }
+            else if (flag == 2) {
+                setState(State.up);
+                return;
+            }
+            else if (flag == 3) {
+                setState(State.down);
+                return;
+            }
+        }
+        if (state != State.idle && !startsButton) {
+            setState(State.idle);
+        }
+    }
 
+    private void setState(State state) {
+        this.state = state;
+    }
 }
