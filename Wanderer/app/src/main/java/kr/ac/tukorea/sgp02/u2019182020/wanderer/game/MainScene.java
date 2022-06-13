@@ -7,6 +7,7 @@ public class MainScene extends Scene {
     //public static final String PARAM_STAGE_INDEX = "stage_index";
     //protected int mapIndex;
     private Player player;
+    private Portal portal;
 
     private static MainScene singleton;
 
@@ -19,7 +20,7 @@ public class MainScene extends Scene {
     }
 
     public enum Layer {
-        player, button, controller, COUNT;
+        portal, player, button, controller, COUNT;
     }
 
     public float size(float unit) {
@@ -35,10 +36,13 @@ public class MainScene extends Scene {
 
         initLayers(Layer.COUNT.ordinal());
 
-        //player = new Player(size(6), size(5), size(2), size(2));
-        player = new Player(0 + 100, 0 + 100, 64 + 100, 64 + 100);
+        portal = new Portal(0 + 500, 0 + 300, 64 + 100, 64 + 100);
+        add(Layer.portal.ordinal(), portal);
 
+        //player = new Player(size(1), size(1), size(3), size(3));
+        player = new Player(0 + 100, 0 + 100, 64 + 100, 64 + 100);
         add(Layer.player.ordinal(), player);
+
         add(Layer.controller.ordinal(), new CollisionChecker(player));
     }
 
