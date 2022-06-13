@@ -16,14 +16,14 @@ public class SelectActivity extends AppCompatActivity {
     }
 
     public void onBtnSelect(View view) {
-        //Intent intent = new Intent(this, GameActivity.class);
-        //startActivity(intent);
-        startActivity(new Intent(this, GameActivity.class));
+        Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
+        //startActivity(new Intent(this, GameActivity.class));
     }
 
     public void onBtnBack(View view) {
-        //Intent intent = new Intent(this, MainActivity.class);
-        //startActivity(intent);
-        startActivity(new Intent(this, MainActivity.class));
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        //startActivity(new Intent(this, MainActivity.class));
     }
 }

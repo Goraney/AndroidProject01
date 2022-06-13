@@ -47,6 +47,11 @@ public class MainScene extends Scene {
     }
 
     @Override
+    protected int getTouchLayerIndex() {
+        return Layer.button.ordinal();
+    }
+
+    @Override
     public void start() {
 
     }
@@ -68,7 +73,7 @@ public class MainScene extends Scene {
 
     @Override
     public boolean handleBackKey() {
-        Scene.popScene();
+        popScene();
         return true;
     }
 }

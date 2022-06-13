@@ -13,11 +13,11 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-
-        setContentView(new GameView(this, null));
+        //Intent intent = getIntent();
 
         MainScene game = MainScene.get();
+        setContentView(new GameView(this, null));
+
         Scene.push(game);
     }
 
