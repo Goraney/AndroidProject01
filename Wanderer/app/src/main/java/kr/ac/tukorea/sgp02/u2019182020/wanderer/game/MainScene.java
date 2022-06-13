@@ -35,7 +35,8 @@ public class MainScene extends Scene {
 
         initLayers(Layer.COUNT.ordinal());
 
-        player = new Player(size(6), size(5), size(2), size(2));
+        //player = new Player(size(6), size(5), size(2), size(2));
+        player = new Player(0 + 100, 0 + 100, 64 + 100, 64 + 100);
 
         add(Layer.player.ordinal(), player);
         add(Layer.controller.ordinal(), new CollisionChecker(player));
