@@ -25,6 +25,7 @@ public class Player extends Sprite implements BoxCollidable {
         this.x = x;
         this.y = y;
         setDstRect(w, h);
+        collisionBox.set(x - w / 2, y - h / 2, x + w / 2, y + h / 2);
         //float bottom = dstRect.bottom;
         //float size = MainScene.get().size(R.dimen.player_width * 4f / 270);
     }
