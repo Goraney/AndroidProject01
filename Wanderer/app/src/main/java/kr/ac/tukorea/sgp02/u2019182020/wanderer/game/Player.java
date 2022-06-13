@@ -18,6 +18,7 @@ public class Player extends Sprite implements BoxCollidable {
         }
     }
 
+    private State state = State.idle;
     protected RectF collisionBox = new RectF();
 
     public Player(float x, float y, float w, float h) {
@@ -36,8 +37,17 @@ public class Player extends Sprite implements BoxCollidable {
     }
 
     @Override
-    public void update() {
+    public void update(float frameTime) {
 
+        switch (state) {
+            case idle:
+                break;
+            case left:
+            case right:
+            case up:
+            case down:
+                break;
+        }
     }
 
 
