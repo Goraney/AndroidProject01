@@ -104,7 +104,7 @@ public class Scene {
 
         for (ArrayList<GameObject> gameObjects : layers) {
             for (GameObject gobj : gameObjects) {
-                gobj.update();
+                gobj.update(frameTime);
             }
         }
     }

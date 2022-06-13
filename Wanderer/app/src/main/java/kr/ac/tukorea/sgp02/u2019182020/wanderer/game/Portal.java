@@ -21,7 +21,7 @@ public class Portal extends Sprite implements BoxCollidable {
     }
 
     @Override
-    public void update() {
+    public void update(float frameTime) {
 
     }
 

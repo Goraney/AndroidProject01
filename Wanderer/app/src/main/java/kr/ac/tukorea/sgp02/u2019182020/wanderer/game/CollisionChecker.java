@@ -19,7 +19,7 @@ public class CollisionChecker implements GameObject {
     }
 
     @Override
-    public void update() {
+    public void update(float frameTime) {
         MainScene game = MainScene.get();
         ArrayList<GameObject> portals = game.objectsAt(MainScene.Layer.portal.ordinal());
         for (GameObject portal : portals)
